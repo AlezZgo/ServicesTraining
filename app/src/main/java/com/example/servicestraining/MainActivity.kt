@@ -1,5 +1,7 @@
 package com.example.servicestraining
 
+import android.app.Notification
+import android.app.NotificationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -17,6 +19,20 @@ class MainActivity : AppCompatActivity() {
         binding.serviceBtn.setOnClickListener {
             startService(MyService.newIntent(this))
         }
+
+        binding.foregroundServiceBtn.setOnClickListener {
+            showNotification()
+        }
+    }
+
+    private fun showNotification() {
+        val notification = Notification.Builder(this)
+            .setContentTitle("Title")
+            .setContentText("text")
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .build()
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(1,notification)
     }
 
     override fun onStart() {
