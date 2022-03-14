@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import com.example.servicestraining.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,11 +37,8 @@ class MainActivity : AppCompatActivity() {
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(notificationChannel)
-        } else {
-            TODO("VERSION.SDK_INT < O .... use Builder with only one arg")
         }
-
-        val notification = Notification.Builder(this,CHANNEL_ID)
+        val notification = NotificationCompat.Builder(this,CHANNEL_ID)
             .setContentTitle("Title")
             .setContentText("text")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
