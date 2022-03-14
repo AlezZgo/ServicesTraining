@@ -24,7 +24,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.foregroundServiceBtn.setOnClickListener {
-            showNotification()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(MyForegroundService.newIntent(this))
+            }
+//            showNotification()
         }
     }
 
