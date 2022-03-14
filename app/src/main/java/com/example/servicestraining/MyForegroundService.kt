@@ -30,6 +30,7 @@ class MyForegroundService : Service() {
                 delay(1000)
                 Log.d("loger", "MyForegroundService timer $i sec")
             }
+            stopSelf()
         }
 
         return START_STICKY
