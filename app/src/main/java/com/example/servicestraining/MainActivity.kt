@@ -16,6 +16,8 @@ import com.example.servicestraining.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    private var page = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             val componentName = ComponentName(this,MyJobService::class.java)
             val jobInfo = JobInfo.Builder(MyJobService.JOB_ID,componentName)
                 .setRequiresCharging(true)
+                .setPersisted(true)
+                .setExtras(MyJobService.newBundle(page++))
                 .build()
             val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
             jobScheduler.schedule(jobInfo)
