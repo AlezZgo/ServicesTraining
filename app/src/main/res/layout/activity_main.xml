@@ -1,157 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/service_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/service" />
+
+
+    <Button
+        android:id="@+id/foreground_service_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/foreground_service" />
 
         <Button
-            android:id="@+id/service_btn"
+            android:id="@+id/intent_service_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/service" />
+            android:text="@string/intent_service" />
+
+    <Button
+        android:id="@+id/job_service_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/job_service" />
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/foreground_service_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/foreground_service" />
+    <Button
+        android:id="@+id/job_intent_service_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/job_intent_service" />
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/job_service_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/job_service" />
+    <Button
+        android:id="@+id/work_manager_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/work_manager" />
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/job_intent_service_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/job_intent_service" />
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/work_manager_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/work_manager" />
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        tools:context=".MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/alarm_manager_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alarm_manager" />
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="24sp"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
-
-
+    <Button
+        android:id="@+id/alarm_manager_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alarm_manager" />
 
 
 </LinearLayout>

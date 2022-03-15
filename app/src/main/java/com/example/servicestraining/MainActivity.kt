@@ -28,6 +28,12 @@ class MainActivity : AppCompatActivity() {
                 MyForegroundService.newIntent(this))
 
         }
+        binding.intentServiceBtn.setOnClickListener {
+            ContextCompat.startForegroundService(
+                this,
+                MyIntentService.newIntent(this))
+
+        }
     }
 
     override fun onStart() {
