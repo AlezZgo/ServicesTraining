@@ -2,6 +2,9 @@ package com.example.servicestraining
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -33,6 +36,14 @@ class MainActivity : AppCompatActivity() {
                 this,
                 MyIntentService.newIntent(this))
 
+        }
+        binding.jobServiceBtn.setOnClickListener {
+            val componentName = ComponentName(this,MyJobService::class.java)
+            val jobInfo = JobInfo.Builder(MyJobService.JOB_ID,componentName)
+                .setRequiresCharging(true)
+                .build()
+            val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+            jobScheduler.schedule(jobInfo)
         }
     }
 
