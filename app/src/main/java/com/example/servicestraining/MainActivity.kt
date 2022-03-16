@@ -53,6 +53,10 @@ class MainActivity : AppCompatActivity() {
                 jobScheduler.enqueue(jobInfo, JobWorkItem(intent))
             }
         }
+
+        binding.jobIntentServiceBtn.setOnClickListener {
+            MyJobIntentService.enqueue(this,page++)
+        }
     }
 
     override fun onStart() {
