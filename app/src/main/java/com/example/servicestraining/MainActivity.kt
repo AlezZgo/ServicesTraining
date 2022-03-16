@@ -1,7 +1,5 @@
 package com.example.servicestraining
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.app.job.JobWorkItem
@@ -10,8 +8,9 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.work.ExistingWorkPolicy
+import androidx.work.WorkManager
 import com.example.servicestraining.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -41,21 +40,30 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.jobServiceBtn.setOnClickListener {
-            val componentName = ComponentName(this,MyJobService::class.java)
-            val jobInfo = JobInfo.Builder(MyJobService.JOB_ID,componentName)
+            val componentName = ComponentName(this, MyJobService::class.java)
+            val jobInfo = JobInfo.Builder(MyJobService.JOB_ID, componentName)
                 .setRequiresCharging(true)
                 .build()
             val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
 
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val intent =MyJobService.newIntent(page++)
+                val intent = MyJobService.newIntent(page++)
                 jobScheduler.enqueue(jobInfo, JobWorkItem(intent))
             }
         }
 
         binding.jobIntentServiceBtn.setOnClickListener {
-            MyJobIntentService.enqueue(this,page++)
+            MyJobIntentService.enqueue(this, page++)
+        }
+
+        binding.workManagerBtn.setOnClickListener {
+            val workManager = WorkManager.getInstance(applicationContext)
+            workManager.enqueueUniqueWork(
+                MyWorker.NAME,
+                ExistingWorkPolicy.APPEND,
+                MyWorker.makeRequest(page++)
+            )
         }
     }
 
