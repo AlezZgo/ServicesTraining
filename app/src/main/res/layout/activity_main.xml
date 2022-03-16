@@ -47,11 +47,4 @@
         android:text="@string/work_manager" />
 
 
-    <Button
-        android:id="@+id/alarm_manager_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/alarm_manager" />
-
-
 </LinearLayout>
