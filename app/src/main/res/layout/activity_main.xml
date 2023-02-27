@@ -46,6 +46,11 @@
         android:layout_height="wrap_content"
         android:text="@string/work_manager" />
 
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

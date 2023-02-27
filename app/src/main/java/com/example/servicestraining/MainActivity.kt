@@ -7,12 +7,19 @@ import android.content.ComponentName
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.os.HandlerCompat.postDelayed
 import androidx.work.ExistingWorkPolicy
 import androidx.work.WorkManager
 import com.example.servicestraining.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,6 +33,36 @@ class MainActivity : AppCompatActivity() {
         Log.d("loger", "main activity created")
 
         var mediaPlayer = MediaPlayer.create(this, R.raw.yellow_taxy)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            while (true){
+                if (mediaPlayer != null) {
+                    val mCurrentPosition: Int = mediaPlayer.getCurrentPosition() / 1000
+                    binding.seekBar.progress = mCurrentPosition
+                }
+                delay(1000)
+            }
+
+        }
+
+        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                if(mediaPlayer != null && p2){
+                    mediaPlayer.seekTo(p1 * 1000);
+                }
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+
+            }
+
+        })
+
+
 
         binding.startBtn.setOnClickListener {
             mediaPlayer.start()
