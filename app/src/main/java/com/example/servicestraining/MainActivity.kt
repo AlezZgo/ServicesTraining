@@ -4,6 +4,7 @@ import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.app.job.JobWorkItem
 import android.content.ComponentName
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +24,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.d("loger", "main activity created")
+
+        var mediaPlayer = MediaPlayer.create(this, R.raw.yellow_taxy)
+
+        binding.startBtn.setOnClickListener {
+            mediaPlayer.start()
+        }
+
+        binding.btnStop.setOnClickListener {
+            mediaPlayer.pause()
+        }
+
         binding.serviceBtn.setOnClickListener {
             startService(MyService.newIntent(this))
         }
